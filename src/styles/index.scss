@@ -1,1 +1,14 @@
 @use 'node_modules/modern-normalize/modern-normalize.css';
+
+@font-face {
+  font-family: 'Lingkawi South';
+  font-weight: 400 700;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/LingkawiSouth.otf) format("opentype");
+}
+
+.handwriting {
+  font-family: 'Lingkawi South';
+}

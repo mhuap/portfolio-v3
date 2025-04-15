@@ -6,6 +6,7 @@ const IndexPage = ({}: PageProps) => {
   return (
     <main>
       idk something goes here
+      <h1 className="handwriting">test</h1>
     </main>
   )
 }
