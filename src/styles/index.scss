@@ -1,4 +1,5 @@
 @use 'node_modules/modern-normalize/modern-normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 
 @font-face {
   font-family: 'Lingkawi South';
@@ -9,6 +10,10 @@
   src: url(/fonts/LingkawiSouth.otf) format("opentype");
 }
 
+body {
+  font-family: 'Geist', sans-serif;
+}
+
 .handwriting {
-  font-family: 'Lingkawi South';
+  font-family: 'Lingkawi South', sans-serif;
 }
