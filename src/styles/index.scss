@@ -1,5 +1,6 @@
 @use 'node_modules/modern-normalize/modern-normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
 @font-face {
   font-family: 'Lingkawi South';
@@ -10,10 +11,73 @@
   src: url(/fonts/LingkawiSouth.otf) format("opentype");
 }
 
+$color-bg: #ECE8E5;
+$color-white: #FAFAF8;
+
 body {
   font-family: 'Geist', sans-serif;
+  background-color: $color-bg;
 }
 
-.handwriting {
+button {
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-weight: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.font-handwriting {
   font-family: 'Lingkawi South', sans-serif;
+}
+
+@mixin font-mono {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.layout {
+  padding: 16px 64px;
+  margin-top: 100px;
+}
+
+@mixin bracket-animation($nav: false) {
+  @include font-mono;
+  transition: all 0.5s;
+
+  .left-bracket, .right-bracket {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s;
+  }
+
+  &:hover {
+    $distance: 4px;
+
+    @if $nav {
+      transform: translate($distance);
+      // 2px bc of nav.header-buttons padding
+      padding-left: calc(2px + $distance);
+      padding-right: calc(2px + $distance);
+    }
+
+    .left-bracket {
+      transform: translate(-$distance);
+    }
+  
+    .right-bracket {
+      transform: translate($distance);
+    }
+  }
+}
+
+.btn-bracket {
+  @include bracket-animation;
+}
+
+.btn-bracket-nav {
+  @include bracket-animation(true);
 }
