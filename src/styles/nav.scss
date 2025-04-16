@@ -1,0 +1,32 @@
+@use 'index';
+
+.nav {
+  position: fixed;
+  display: flex;
+  top: 0;
+  width: 100%;
+  padding: 12px 64px;
+  justify-content: space-between;
+}
+
+.header-buttons {
+  display: inline-block;
+  background-color: index.$color-white;
+  padding: 3px 2px;
+}
+
+.face-icon {
+  @include index.font-mono;
+  font-weight: bold;
+  padding: 3px 4px;
+  letter-spacing: 0.03em;
+  text-transform: none;
+
+  &::before {
+    content: "x_x";
+  }
+
+  &:hover::before {
+    content: "u_u";
+  }
+}

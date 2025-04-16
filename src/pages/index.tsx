@@ -1,16 +1,22 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import "../styles/index.scss";
+import Layout from "../components/Layout.tsx";
+import BracketButton from "../components/BracketButton.tsx";
 
-const IndexPage = ({}: PageProps) => {
+// @refresh reset
+function IndexPage ({}: PageProps) {
   return (
-    <main>
-      idk something goes here
-      <h1 className="handwriting">test</h1>
-    </main>
+    <Layout>
+      <main>
+        idk something goes here
+        <h1 className="font-handwriting">test</h1>
+        <BracketButton text="testing button"/>
+      </main>
+    </Layout>
   )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Home Page</title>;
