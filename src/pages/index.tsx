@@ -3,16 +3,21 @@ import type { HeadFC, PageProps } from "gatsby";
 import "../styles/index.scss";
 import Layout from "../components/Layout.tsx";
 import BracketButton from "../components/BracketButton.tsx";
+import Hero from "../components/home/Hero.tsx";
+import SectionLabel from "../components/home/SectionLabel.tsx";
+import Software from "../components/home/Software.tsx";
 
-// @refresh reset
 function IndexPage ({}: PageProps) {
   return (
     <Layout>
-      <main>
+      <Hero />
+      <SectionLabel title="software projects"/>
+      <Software />
+      <section>
         idk something goes here
-        <h1 className="font-handwriting">test</h1>
+        <h2 className="font-handwriting">test</h2>
         <BracketButton text="testing button"/>
-      </main>
+      </section>
     </Layout>
   )
 }
