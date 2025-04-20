@@ -1,0 +1,55 @@
+@use 'index';
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  width: min-content;
+}
+
+.hero-top-info {
+  @include index.font-mono;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.old-city {
+  text-decoration: line-through;
+}
+
+.site-title {
+  text-align: left;
+  width: min-content;
+}
+
+.site-title.handwriting {
+  text-wrap: nowrap;
+  transform: rotateZ(3.8deg);
+  margin-top: 20px;
+  align-self: flex-end;
+}
+
+@media (min-width: index.$breakpoint-md){
+  .hero {
+    width: min-content;
+    margin: 0 auto;
+  }
+
+  .hero-top-info {
+    flex-direction: row;
+  }
+
+  .site-title {
+    text-align: center;
+    width: max-content;
+  }
+
+  .site-title.handwriting {
+    transform: rotateZ(3.8deg);
+    margin-left: 48%;
+    margin-top: 12px;
+    align-self: auto;
+  }
+}

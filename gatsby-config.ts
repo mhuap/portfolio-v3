@@ -10,14 +10,28 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   // plugins: ["gatsby-plugin-sass", "gatsby-plugin-google-gtag", "gatsby-plugin-mdx",{
-  plugins: ["gatsby-plugin-sass", "gatsby-plugin-mdx",{
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "pages",
-      "path": "./src/pages/"
+  plugins: [
+    "gatsby-plugin-sass", "gatsby-plugin-mdx",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": "./src/pages/"
+      },
+      __key: "pages"
     },
-    __key: "pages"
-  }]
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/images/"
+      },
+      __key: "images"
+    }
+  ]
 };
 
 export default config;
