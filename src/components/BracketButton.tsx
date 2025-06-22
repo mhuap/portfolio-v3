@@ -10,10 +10,10 @@ export default function BracketButton({
   nav?: boolean
 }) {
   return (
-    <button className={(nav ? "btn-bracket-nav " : "btn-bracket ") + className}>
+    <a className={(nav ? "btn-bracket-nav " : "btn-bracket ") + className}>
       <span className="left-bracket">[</span>
       {text}
       <span className="right-bracket">]</span>
-    </button>
+    </a>
   )
 }

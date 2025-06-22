@@ -6,7 +6,7 @@ function Layout ({ children }: React.PropsWithChildren<{}>) {
   return (
     <>
       <nav className="nav">
-        <button className="header-buttons face-icon"></button>
+        <a className="header-buttons face-icon"></a>
         <BracketButton
           className="header-buttons"
           text="About"

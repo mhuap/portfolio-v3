@@ -5,24 +5,154 @@
   display: flex;
   align-items: baseline;
   margin-bottom: 24px;
+
+  .sparkle {
+    margin-left: 0;
+    // margin-right: 0.5rem;
+  }
 }
 
 .square {
   $size: 8px;
 
-  margin-right: 16px;
+  margin-right: 1rem;
   height: $size;
   width: $size;
   background-color: index.$color-primary;
 }
 
-.software-section {
+@mixin section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
-  margin-bottom: 32px;
+}
+
+@mixin section-grid-xs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.software-section {
+  @include section-grid-xs;
+  margin-bottom: index.$spacing-section-bottom;
 }
 
 .project-description {
   letter-spacing: -0.01em;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.more-project-list .btn-bracket {
+  padding: 2px 0;
+}
+
+.freq-tools {
+  display: flex;
+  flex-direction: column;
+}
+
+.freq-tools, .design-list {
+  ul {
+    @include index.font-mono;
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.other-tools {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.more-project-link {
+  display: flex;
+  align-items: center;
+}
+
+.design-section {
+  margin-bottom: index.$spacing-section-bottom;
+}
+
+.design-gallery {
+  @include section-grid-xs;
+  margin-bottom: 16px;
+}
+
+.design-video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  height: min-content;
+
+  grid-column: span 1;
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+  }
+}
+
+.design-gallery-images {
+  display: contents;
+
+  .g-image {
+    height: fit-content;
+  }
+}
+
+@media (min-width: index.$breakpoint-sm) {
+  .section-label .section-label-award {
+    display: inline;
+  }
+}
+
+// 2 images + gap + page margin
+// (300+300) + 16 + (12+12) = 640
+@media (min-width: 640px) {
+  .software-section {
+    @include section-grid;
+  }
+
+  .design-gallery {
+    @include section-grid;
+  }
+  
+  .design-video {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: index.$breakpoint-4grid) {
+  .software-section {
+    row-gap: 48px;
+  }
+
+  .more-project-list {
+    grid-column: span 2;
+  }
+
+  .freq-tools {
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .design-gallery-images {
+    @include section-grid;
+  }
+
+  .design-video {
+    grid-column: span 1;
+  }
 }
