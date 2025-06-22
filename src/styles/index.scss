@@ -17,9 +17,17 @@ $color-white: #FAFAF8;
 $color-primary: #2C36F2;
 $color-faded: #C2C0C3;
 
-$breakpoint-md: 768px;
+$border-faded: 2px solid $color-faded;
 
-$border-faded: 1px solid $color-faded;
+$breakpoint-sm: 375px;
+// $breakpoint-md: 768px;
+// 679 + 64+64
+$breakpoint-md: 807px;
+// 4 images + 3 gaps + page margin
+// 300+300+300+300 + 16+16+16 + 64+64 = 1376
+$breakpoint-4grid: 1376px;
+
+$spacing-section-bottom: 120px;
 
 @mixin font-handwriting {
   font-family: 'Lingkawi South', sans-serif;
@@ -41,24 +49,29 @@ body {
   color: $color-black;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
-button {
-  border-radius: 0;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  font-weight: inherit;
-  text-transform: inherit;
+// button {
+//   display: block;
+//   border-radius: 0;
+  
+//   border: none;
+//   background-color: transparent;
+//   font-weight: inherit;
+//   text-transform: inherit;
+//   cursor: pointer;
+// }
+
+a {
   cursor: pointer;
 }
 
 h1 {
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin: 0;
   line-height: 92%;
 }
@@ -74,6 +87,57 @@ h1.handwriting {
   margin-top: 2rem;
 }
 
+.footer-cta {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: $spacing-section-bottom;
+
+  .footer-cta-blurb, .footer-cta-button {
+    width: 50%;
+  }
+
+  .footer-cta-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .credit-description {
+    @include font-mono;
+    margin-bottom: 0.5rem;
+  }
+
+  .signature {
+    @include font-handwriting;
+    text-transform: uppercase;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    margin-bottom: -0.5rem;
+  }
+
+  .spacing-15 {
+    letter-spacing: 0.15em;
+  }
+
+  .footer-info-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .btn-bracket {
+    padding: 2px 0;
+  }
+}
+
 @mixin bracket-animation($nav: false) {
   @include font-mono;
   transition: all 0.5s;
@@ -82,6 +146,7 @@ h1.handwriting {
     position: relative;
     display: inline-block;
     transition: transform 0.5s;
+    // color: $color-primary;
   }
 
   &:hover {
@@ -112,14 +177,36 @@ h1.handwriting {
   @include bracket-animation(true);
 }
 
-.underlined-title {
+.folder-title {
   @include font-mono;
   padding-bottom: 4px;
-  border-bottom: $border-faded;
   margin-bottom: 8px;
 
   &::before {
     content: "/";
+  }
+}
+
+.underlined-folder-title {
+  @extend .folder-title;
+  border-bottom: $border-faded;
+
+  .sparkle {
+    float: right;
+  }
+}
+
+.sparkle {
+  display: inline-block;
+  font-family: 'Geist', sans-serif;
+  font-size: 1rem;
+  line-height: 0.75rem;
+  margin-left: 8px;
+}
+
+@media (min-width: $breakpoint-sm) {
+  h1 {
+    font-size: 3.75rem;
   }
 }
 
@@ -130,5 +217,11 @@ h1.handwriting {
 
   .layout {
     padding: 16px 64px;
+  }
+}
+
+@media (min-width: $breakpoint-4grid) {
+  .footer-cta {
+    width: 50%;
   }
 }

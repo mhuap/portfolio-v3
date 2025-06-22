@@ -1,0 +1,65 @@
+[
+  {
+    "title": "bsky-img",
+    "type": "Progressive web app",
+    "description": "Web app to make images from tweets, with customizable backgrounds",
+    "image": "../images/software/tweetimg/tweetimg.jpg"
+  },
+  {
+    "title": "Discograph",
+    "type": "Web app",
+    "description": "A tool to quickly create a playlist of an artist's entire discography",
+    "image": "../images/software/discograph/mockup2.jpeg"
+  },
+  {
+    "title": "Mood Tracker",
+    "type": "Mobile app",
+    "description": "Mobile CRUD app to track emotions based on the Roberts emotion wheel",
+    "image": "../images/software/moodTracker/moodTracker.png"
+  },
+  {
+    "title": "ezPath (UX research)",
+    "type": "UX research",
+    "description": "Mobile app to help people choose post-secondary education",
+    "image": "../images/software/ezpath/ezpath2.jpg",
+    "award": "2nd place IBM design competition"
+  },
+  {
+    "title": "Lego Fortnite Helper",
+    "type": "Web app",
+    "description": "A tool to calculate pieces needed for a build in Lego Fortnite",
+    "image": "../images/software/filler.jpeg"
+  },
+  {
+    "title": "Random Legend Generator",
+    "type": "Web app",
+    "description": "A tool to suggest a random legend to play in Apex Legends",
+    "image": "../images/software/filler.jpeg"
+  },
+  {
+    "title": "Solace",
+    "type": "App redesign",
+    "description": "Redesigning Solace, a transgender goal setting app, with a more modern UI and more inclusive onboarding",
+    "image": "../images/software/solace/solace.jpeg",
+    "award": "\"Top tier work\" - Founder & CEO of Euphoria, Katherine Anthony"
+  },
+  {
+    "title": "Everwear",
+    "type": "Hackathon",
+    "description": "A web-app that suggests sustainable alternatives to clothes the user is already interested in buying",
+    "image": "../images/software/everwear/everwear1.jpg",
+    "award": "Best Use of Google Cloud: UofT Hacks"
+  },
+  {
+    "title": "COGx",
+    "type": "Site redesign",
+    "description": "A website redesign, with a more modern, consistent design system and copy tailored for readability",
+    "image": "../images/software/cogx/cogx.jpg"
+  },
+  {
+    "title": "LGBTOUT",
+    "type": "Wordpress redesign",
+    "description": "A redesign and content update for LGBTOUT's Wordpress website",
+    "image": "../images/software/lgbtout/lgbtout.jpg"
+  }
+]

@@ -1,39 +1,27 @@
 import React from 'react';
 // import { useStaticQuery, graphql } from "gatsby";
-// import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import UnderlinedTitle from '../UnderlinedTitle.tsx';
-import { Project } from './Software.tsx';
+import FolderTitle from '../FolderTitle.tsx';
+import { SoftwareProjectType } from '../../pages/index.tsx';
 
 export default function SoftwareProject({
   project
 } : {
-  project: Project,
+  project: SoftwareProjectType,
 }) {
-  const { title, description, image } = project;
+  const { title, description, image, award } = project;
+
+  const imageData = getImage(image)!;
+  console.log("award:", award);
 
   return (
     <div className='software-project'>
-      <UnderlinedTitle title={title}/>
+      <FolderTitle title={title} extra={award}/>
       <p className="project-description">
        {description}
       </p>
-      {/* <GatsbyImage image={image} /> */}
+      <GatsbyImage image={imageData} alt={title + " mockup"} />
     </div>
   )
 }
-
-// graphql`
-//     query ($title: String, $relDir: String) {
-//       allFile(filter: {relativeDirectory: {eq: $relDir}, name: {eq: $title}}) {
-//         edges {
-//           node {
-//             name
-//             childImageSharp {
-//               gatsbyImageData
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `
