@@ -3,25 +3,26 @@ import React from 'react';
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import FolderTitle from '../FolderTitle.tsx';
-import { SoftwareProjectType } from '../../pages/index.tsx';
+import { ProjectType } from '../../pages/index.tsx';
+import { Link } from 'gatsby';
 
 export default function SoftwareProject({
   project
 } : {
-  project: SoftwareProjectType,
+  project: ProjectType,
 }) {
-  const { title, description, image, award } = project;
+  const { title, slug, description, image, award } = project;
 
   const imageData = getImage(image)!;
-  console.log("award:", award);
+  const totalSlug = "/projects/" + slug;
 
   return (
-    <div className='software-project'>
+    <Link to={totalSlug} className='software-project'>
       <FolderTitle title={title} extra={award}/>
       <p className="project-description">
        {description}
       </p>
       <GatsbyImage image={imageData} alt={title + " mockup"} />
-    </div>
+    </Link>
   )
 }

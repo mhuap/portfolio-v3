@@ -2,7 +2,6 @@ import * as React from "react";
 import { HeadFC, PageProps, graphql } from "gatsby";
 import "../styles/index.scss";
 import Layout from "../components/Layout.tsx";
-import BracketButton from "../components/BracketButton.tsx";
 import Hero from "../components/home/Hero.tsx";
 import SectionLabel from "../components/home/SectionLabel.tsx";
 import Software from "../components/home/Software.tsx";
@@ -10,42 +9,67 @@ import { ImageDataLike } from "gatsby-plugin-image";
 import Sparkle from "../components/Sparkle.tsx";
 import Design from "../components/home/Design.tsx";
 import Footer from "../components/home/Footer.tsx";
-// import { SoftwareProject as SoftwareProjectType } from "../../gatsby-node.ts";
 
-export interface SoftwareProjectType {
+export interface ProjectType {
   title: string,
-  type: string,
+  slug: string,
+  featured?: boolean,
+  type?: string,
   description: string,
   image: ImageDataLike,
-  award?: string
+  date: string,
+  role: string,
+  context: string,
+  skills: string[],
+  award?: string,
+  teammates?: string,
 };
 
-export interface DesignProjectType {
-  title: string,
-  image: ImageDataLike
-}
-
 type DataType = {
-  allSoftwareProjectJson: {
-    nodes: SoftwareProjectType[]
-  },
-  allDesignProjectJson: {
-    nodes: DesignProjectType[]
+  allMdx: {
+    nodes: {
+      frontmatter: ProjectType,
+      parent: {
+        relativeDirectory: "design" | "software"
+      }
+    }[]
   }
 }
 
-function IndexPage ({data: { allSoftwareProjectJson, allDesignProjectJson }}: PageProps<DataType>) {
+function IndexPage ({
+  data: { allMdx }
+} : 
+  PageProps<DataType>
+){
+  const projects = allMdx.nodes.reduce(
+    (result: {software: ProjectType[], design: ProjectType[]}, projectNode) => {
+      if (projectNode.parent.relativeDirectory === "software"){
+        return {
+          ...result,
+          software: result.software.concat(projectNode.frontmatter)
+        };
+      } else if (projectNode.parent.relativeDirectory === "design"){
+        return {
+          ...result,
+          design: result.design.concat(projectNode.frontmatter)
+        };
+      }
+      return result;
+    },
+    {software: [], design: []}
+  );
+
   return (
     <Layout>
       <Hero />
       <SectionLabel>
         Software projects <div className="section-label-award">(<Sparkle/> = award/recognition)</div>
       </SectionLabel>
-      <Software projects={allSoftwareProjectJson.nodes}/>
+      <Software projects={projects.software}/>
       <SectionLabel>
         Graphic & motion design
       </SectionLabel>
-      <Design projects={allDesignProjectJson.nodes}/>
+      <Design projects={projects.design}/>
       <Footer />
     </Layout>
   )
@@ -53,25 +77,24 @@ function IndexPage ({data: { allSoftwareProjectJson, allDesignProjectJson }}: Pa
 
 export const query = graphql`
   {
-    allSoftwareProjectJson {
+    allMdx {
       nodes {
-        title
-        type
-        description
-        award
-        image {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
+        frontmatter {
+          title
+          slug
+          type
+          description
+          award
+          featured
+          image {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
           }
         }
-      }
-    }
-    allDesignProjectJson {
-      nodes {
-        title
-        image {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
+        parent {
+          ... on File {
+            relativeDirectory
           }
         }
       }
@@ -82,4 +105,4 @@ export const query = graphql`
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Matias Huapaya - Portfolio</title>;

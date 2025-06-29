@@ -39,6 +39,14 @@ const config: GatsbyConfig = {
         "path": "./src/data/"
       },
       __key: "data"
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "projects",
+        "path": "./src/content/projects"
+      },
+      __key: "projects"
     }
   ]
 };

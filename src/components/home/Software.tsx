@@ -1,27 +1,28 @@
 import React from 'react';
 import SoftwareProject from './SoftwareProject.tsx';
-import { SoftwareProjectType } from '../../pages/index.tsx';
+import { ProjectType } from '../../pages/index.tsx';
 import BracketButton from '../BracketButton.tsx';
 import FolderTitle from '../FolderTitle.tsx';
 import Sparkle from '../Sparkle.tsx';
+import { Link } from 'gatsby';
 
-export default function Software({ projects } : {projects: SoftwareProjectType[]}) {
+export default function Software({ projects } : {projects: ProjectType[]}) {
   
-  const main = projects.slice(0,4);
-  const rest = projects.slice(4);
+  const main = projects.filter(p => p.featured)
+  const rest = projects.filter(p => !p.featured);
   
   return (
     <section className="software-section">
       {main.map((p) => (
-        <SoftwareProject project={p}/>
+        <SoftwareProject project={p} key={p.title}/>
       ))}
       <div className="more-project-list">
         <FolderTitle title='More' underlined={false}/>
         {rest.map((p) => (
-          <div className="more-project-link">
+          <Link to={"/projects/" + p.slug} className="more-project-link" key={p.title}>
             <BracketButton text={p.title + " = " + p.type}/>
             {p.award && <Sparkle />}
-          </div>
+          </Link>
         ))}
       </div>
       <div className="freq-tools">
